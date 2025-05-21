@@ -315,21 +315,24 @@ class App extends Component {
             <div className="navBar">
               <img
                 src="https://assets.ccbp.in/frontend/react-js/match-game-website-logo.png"
-                alt="logo"
+                alt="website logo"
               />
-              <div className="nav-score">
-                <p>Score : {score}</p>
-                <div>
+              <ul className="nav-score">
+                <li className="navItem">
+                  <p>Score:</p>
+                  <p>{score}</p>
+                </li>
+                <li>
                   <img
                     src="https://assets.ccbp.in/frontend/react-js/match-game-timer-img.png"
                     alt="timer"
                   />
-                  {time}
-                </div>
-              </div>
+                  <p>{time} sec</p>
+                </li>
+              </ul>
             </div>
             <div className="imageBgContainer">
-              <img src={displayedImage.imageUrl} alt="displayimage" />
+              <img src={displayedImage.imageUrl} alt="match" />
               <ul className="tabContainer">
                 {tabsList.map(item => (
                   <li className="tabItem" key={item.tabId}>
@@ -343,17 +346,15 @@ class App extends Component {
                   </li>
                 ))}
               </ul>
-              <div>
+              <ul>
                 {filteredImageList.map(item => (
-                  <button
-                    type="button"
-                    key={item.id}
-                    onClick={() => this.onClickImg(item)}
-                  >
-                    <img src={item.thumbnailUrl} alt={item.imageUrl} />
-                  </button>
+                  <li className="imageContainer" key={item.id}>
+                    <button type="button" onClick={() => this.onClickImg(item)}>
+                      <img src={item.thumbnailUrl} alt="thumbnail" />
+                    </button>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </>
         )}
@@ -369,7 +370,7 @@ class App extends Component {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/match-game-play-again-img.png"
                 alt="reset"
-              />{' '}
+              />
               PLAY AGAIN
             </button>
           </div>
